@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">OmniControl</string>
+    <!-- Settings Activity Title -->
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="weather_config_title">Weather service</string>
+    <string name="weather_config_summary">System service settings</string>
+
+    <string name="omni_remote_title">OmniRemote</string>
+    <string name="omni_remote_summary">VNC server to allow remote connection to device</string>
+    <string name="apps_header">Applications</string>
+    <string name="matlog_title">MatLog</string>
+    <string name="matlog_summary">Show logcat</string>
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_summary">Browser changes added to builds</string>
+    <string name="omniswitch_title">OmniSwitch</string>
+    <string name="omniswitch_summary">Universal recent application switcher</string>
+    <string name="omnistore_title">OmniStore</string>
+    <string name="omnistore_summary">Download applications</string>
+</resources>
