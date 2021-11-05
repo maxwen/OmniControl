@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:icon="@drawable/ic_bars_tile"
+        android:key="bars_settings"
+        android:title="Bars">
+    </Preference>
+
+    <Preference
+        android:icon="@drawable/ic_settings_more"
+        android:key="more_settings"
+        android:title="More">
+    </Preference>
+</PreferenceScreen>

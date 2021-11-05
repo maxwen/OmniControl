@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="applist_icon_size">108dp</dimen>
+    <dimen name="grip_view_spacing">8dp</dimen>
+    <dimen name="grid_item_corner_radius">16dp</dimen>
+</resources>

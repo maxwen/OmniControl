@@ -7,14 +7,9 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="windowActionBar">false</item>
-        <item name="toolbarStyle">@style/Theme.OmniControl.ToolBar</item>
     </style>
 
-    <style name="Theme.OmniControl.ToolBar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
-        <item name="contentInsetStart">32dp</item>
-    </style>
-
-    <style name="Theme.OmniControl.ToolBar.TitleTextStyle" parent="TextAppearance.MaterialComponents.Body1">
+    <style name="Theme.OmniControl.TitleTextStyle" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textSize">32dp</item>
         <item name="android:color">?android:textColorPrimary</item>
     </style>

@@ -1,0 +1,28 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="bars_settings">
+    <PreferenceCategory
+        android:key="statusbar_settings_category"
+        android:title="@string/statusbar_settings_category">
+
+        <org.omnirom.control.preference.SecureSettingSwitchPreference
+            android:key="clock_seconds"
+            android:title="@string/status_bar_clock_seconds_title"
+            android:summary="@string/status_bar_clock_seconds_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="category_navigationbar"
+        android:title="@string/navigationbar_title">
+
+        <org.omnirom.control.preference.SystemSettingSwitchPreference
+            android:key="navbar_visibility"
+            android:title="@string/navigation_bar_show_title"
+            android:summary="@string/navigation_bar_show_summary" />
+
+    </PreferenceCategory>
+</PreferenceScreen>
+
+

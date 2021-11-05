@@ -8,7 +8,6 @@
 
     <string name="omni_remote_title">OmniRemote</string>
     <string name="omni_remote_summary">VNC server to allow remote connection to device</string>
-    <string name="apps_header">Applications</string>
     <string name="matlog_title">MatLog</string>
     <string name="matlog_summary">Show logcat</string>
     <string name="changelog_title">Changelog</string>
@@ -17,4 +16,23 @@
     <string name="omniswitch_summary">Universal recent application switcher</string>
     <string name="omnistore_title">OmniStore</string>
     <string name="omnistore_summary">Download applications</string>
+    <string name="wallpaper_title">Wallpapers</string>
+    <string name="wallpaper_summary">Browse OmniROM themed wallpapers</string>
+    <string name="applist_title">Applications</string>
+    <string name="settings_title">Settings</string>
+    <string name="device_settings_title">Device settings</string>
+    <string name="device_settings_summary">Advanced device specific settings</string>
+
+    <string name="bars_settings_title">Bars</string>
+    <string name="more_settings_title">More</string>
+    <string name="applist_settings_title">Applications</string>
+
+    <string name="navigationbar_title">Navigation bar</string>
+    <string name="navigation_bar_show_title">Show navigation bar</string>
+    <string name="navigation_bar_show_summary">Force enable navigation bar</string>
+
+    <string name="statusbar_settings_category">Status bar</string>
+    <string name="status_bar_clock_seconds_title">Show clock seconds</string>
+    <string name="status_bar_clock_seconds_summary">Show seconds on status bar clock</string>
+
 </resources>
