@@ -99,6 +99,14 @@ class GridViewFragment() : Fragment() {
                 ButtonSettingsFragment()
             )
         )
+        gridItems.add(
+            FragmentGridItem(
+                R.string.lockscreen_item_title,
+                R.string.lockscreen_item_summary,
+                R.drawable.ic_lockscreen_tile,
+                LockscreenSettingsFragment()
+            )
+        )
         if (Utils.isAvailableApp(requireContext(), "org.omnirom.omnistyle")) {
             val wallpaperIntent = Intent()
             wallpaperIntent.component = ComponentName(
