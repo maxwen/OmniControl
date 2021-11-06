@@ -4,4 +4,10 @@
     <Preference
         android:key="bar"
         android:title="bar" />
+
+    <ListPreference
+        android:entries="@array/reply_entries"
+        android:entryValues="@array/reply_values"
+        android:key="list"
+        android:title="list" />
 </PreferenceScreen>

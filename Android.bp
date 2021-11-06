@@ -1,0 +1,29 @@
+android_app {
+  name: "OmniControl",
+  manifest: "app/src/main/AndroidManifest.xml",
+  platform_apis: true,
+  certificate: "platform",
+  privileged: true,
+
+  srcs: [
+    "app/src/main/**/*.kt",
+    "app/src/main/**/*.java",
+  ],
+
+  resource_dirs: [
+    "app/src/main/res/",
+  ],
+
+  static_libs: [
+    "androidx.core_core",
+    "androidx.appcompat_appcompat",
+    "androidx.preference_preference",
+    "com.google.android.material_material",
+  ],
+
+  kotlincflags: ["-Xjvm-default=enable"],
+  
+  optimize: {
+    enabled: false,
+  },
+}

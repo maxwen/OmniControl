@@ -1,30 +1,34 @@
+/*
+ *  Copyright (C) 2021 The OmniROM Project
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package org.omnirom.control
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 
 class AppListFragment : PreferenceFragmentCompat() {
-    val KEY_APPS_LIST = "apps_list"
-    val OMNISTORE_APP_PKG = "org.omnirom.omnistore"
-    val OMNISTORE_INSTALL_PKG = "org.omnirom.omnistoreinstaller"
+    private val KEY_APPS_LIST = "apps_list"
+    private val OMNISTORE_APP_PKG = "org.omnirom.omnistore"
+    private val OMNISTORE_INSTALL_PKG = "org.omnirom.omnistoreinstaller"
     lateinit var appManager: ApplicationManager
-
-    fun isAvailableApp(packageName: String): Boolean {
-        val pm: PackageManager = requireContext().getPackageManager()
-        return try {
-            val enabled = pm.getApplicationEnabledSetting(packageName)
-            enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED &&
-                    enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
-        } catch (e: Exception) {
-            false
-        }
-    }
 
     override fun onResume() {
         super.onResume()
@@ -86,32 +90,32 @@ class AppListFragment : PreferenceFragmentCompat() {
             resources.getString(R.string.omnistore_summary)
         )
 
-        appManager.addApp(
+        /*appManager.addApp(
             "org.omnirom.omnistyle",
             "org.omnirom.omnistyle.WallpaperActivity",
             getString(R.string.wallpaper_title),
             getString(R.string.wallpaper_summary)
-        )
+        )*/
 
         appManager.addApp(
-                "org.omnirom.device",
-                "org.omnirom.device.DeviceSettings",
-                getString(R.string.device_settings_title),
-                getString(R.string.device_settings_summary)
+            "org.omnirom.device",
+            "org.omnirom.device.DeviceSettings",
+            getString(R.string.device_settings_title),
+            getString(R.string.device_settings_summary)
         )
         createAppList()
     }
 
-    fun createAppList() {
+    private fun createAppList() {
         var appCategory: PreferenceCategory? = findPreference(KEY_APPS_LIST)
         if (appCategory != null) {
             appCategory.removeAll()
             for (app in appManager.mAppList) {
-                if (!isAvailableApp(app.mPackage)) {
+                if (!Utils.isAvailableApp(requireContext(), app.mPackage)) {
                     continue
                 }
-                if (app.mPackage.equals(OMNISTORE_INSTALL_PKG) && isAvailableApp(
-                        OMNISTORE_APP_PKG
+                if (app.mPackage.equals(OMNISTORE_INSTALL_PKG) && Utils.isAvailableApp(
+                        requireContext(), OMNISTORE_APP_PKG
                     )
                 ) {
                     continue
@@ -129,6 +133,7 @@ class AppListFragment : PreferenceFragmentCompat() {
             }
         }
     }
+
     override fun onPreferenceTreeClick(preference: Preference?): Boolean {
         if (preference?.key != null) {
             var app: Application? = appManager.getAppOfPackage(preference.key)

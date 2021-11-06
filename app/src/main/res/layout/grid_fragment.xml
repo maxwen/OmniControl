@@ -8,10 +8,9 @@
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="auto_fit"
+        android:numColumns="@integer/grid_view_columns"
         android:verticalSpacing="@dimen/grip_view_spacing"
         android:horizontalSpacing="@dimen/grip_view_spacing"
         android:stretchMode="columnWidth"
-        android:columnWidth="200dp"
         android:gravity="center" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,21 @@
 package org.omnirom.control
-
+/*
+ *  Copyright (C) 2021 The OmniROM Project
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -15,16 +31,10 @@ import android.graphics.PaintFlagsDrawFilter
 
 
 
-class ApplicationManager {
-
-    val mContext: Context
+class ApplicationManager(context: Context) {
+    private val mContext: Context = context
     val mAppList: ArrayList<Application> = ArrayList()
-    val mIconSize: Int
-
-    constructor(context: Context) {
-        mContext = context
-        mIconSize = mContext.resources.getDimensionPixelSize(R.dimen.applist_icon_size)
-    }
+    private val mIconSize: Int = mContext.resources.getDimensionPixelSize(R.dimen.applist_icon_size)
 
     fun getAppIcon(app: Application): Drawable {
         val pm: PackageManager = mContext.getPackageManager()
@@ -41,7 +51,6 @@ class ApplicationManager {
         try {
             mContext.startActivity(intent)
         } catch (e: Exception) {
-
         }
     }
 
@@ -51,30 +60,17 @@ class ApplicationManager {
 
     fun getAppOfPackage(packageName: String): Application? {
         for (app in mAppList) {
-            if (app.mPackage.equals(packageName)) return app
+            if (app.mPackage == packageName) return app
         }
         return null
     }
 
-    fun isAvailableApp(app: Application): Boolean {
-        val pm: PackageManager = mContext.getPackageManager()
-        return try {
-            val enabled = pm.getApplicationEnabledSetting(app.mPackage)
-            enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED &&
-                    enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
-        }
-    }
-
-    fun resizeAppIcon(image: Drawable,
-        size: Int, border: Int): Drawable {
+    private fun resizeAppIcon(image: Drawable,
+                              size: Int, border: Int): Drawable {
         val canvas = Canvas()
-        canvas.setDrawFilter(
-            PaintFlagsDrawFilter(
-                Paint.ANTI_ALIAS_FLAG,
-                Paint.FILTER_BITMAP_FLAG
-            )
+        canvas.drawFilter = PaintFlagsDrawFilter(
+            Paint.ANTI_ALIAS_FLAG,
+            Paint.FILTER_BITMAP_FLAG
         )
         val bmResult = Bitmap.createBitmap(
             size + border, size + border,

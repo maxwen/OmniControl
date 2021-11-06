@@ -24,16 +24,16 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
 
-class MoreSettingsFragment : PreferenceFragmentCompat() {
+class ButtonSettingsFragment : PreferenceFragmentCompat() {
 
     override fun onResume() {
         super.onResume()
         (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (activity as? SettingsActivity)?.updateFragmentTitle(resources.getString(R.string.more_settings_title))
+        (activity as? SettingsActivity)?.updateFragmentTitle(resources.getString(R.string.button_settings_title))
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.more_settings_preferences, rootKey)
+        setPreferencesFromResource(R.xml.button_settings_preferences, rootKey)
     }
 
     override fun onPreferenceTreeClick(preference: Preference?): Boolean {
