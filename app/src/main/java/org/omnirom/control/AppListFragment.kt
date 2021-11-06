@@ -97,12 +97,12 @@ class AppListFragment : PreferenceFragmentCompat() {
             getString(R.string.wallpaper_summary)
         )*/
 
-        appManager.addApp(
+        /*appManager.addApp(
             "org.omnirom.device",
             "org.omnirom.device.DeviceSettings",
             getString(R.string.device_settings_title),
             getString(R.string.device_settings_summary)
-        )
+        )*/
         createAppList()
     }
 

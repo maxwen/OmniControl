@@ -114,6 +114,21 @@ class GridViewFragment() : Fragment() {
                 )
             )
         }
+        if (Utils.isAvailableApp(requireContext(), "org.omnirom.device")) {
+            val deviceIntent = Intent()
+            deviceIntent.component = ComponentName(
+                "org.omnirom.device",
+                "org.omnirom.device.DeviceSettings"
+            )
+            gridItems.add(
+                IntentGridItem(
+                    R.string.device_settings_title,
+                    R.string.device_settings_summary,
+                    R.drawable.ic_settings_omnigears,
+                    deviceIntent
+                )
+            )
+        }
         gridItems.add(
             FragmentGridItem(
                 R.string.more_settings_title,
