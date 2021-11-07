@@ -17,5 +17,5 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="@dimen/grid_item_corner_radius" />
-    <solid android:color="@color/colorPrimary" />
+    <solid android:color="@color/grid_shape_background" />
 </shape>

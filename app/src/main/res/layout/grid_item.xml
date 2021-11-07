@@ -6,20 +6,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/grid_item_border"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/grid_item_icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/grid_item_icon_size"
+            android:layout_height="@dimen/grid_item_icon_size"
             android:layout_gravity="center_vertical" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="@dimen/fragment_icon_margin_start"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -27,18 +27,16 @@
                 android:id="@+id/grid_item_title"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="foo"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+                android:textAppearance="@style/Theme.OmniControl.GridItem.TitleTextStyle"/>
 
             <TextView
                 android:id="@+id/grid_item_summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="bar"
                 android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"/>
+                android:textAppearance="@style/Theme.OmniControl.GridItem.SummaryTextStyle"/>
 
         </LinearLayout>
     </LinearLayout>

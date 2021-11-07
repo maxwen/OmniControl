@@ -18,18 +18,21 @@
 package org.omnirom.control
 
 import android.os.Bundle
-import android.provider.Settings
-import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
 
 
-class LockscreenSettingsFragment : PreferenceFragmentCompat() {
+class LockscreenSettingsFragment : AbstractSettingsFragment() {
 
-    override fun onResume() {
-        super.onResume()
-        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (activity as? SettingsActivity)?.updateFragmentTitle(resources.getString(R.string.lockscreen_item_title))
+    override fun getFragmentTitle(): String {
+        return resources.getString(R.string.lockscreen_item_title)
+    }
+
+    override fun getFragmentSummary(): String {
+        return resources.getString(R.string.lockscreen_item_summary)
+    }
+
+    override fun getFragmentIcon(): Int {
+        return R.drawable.ic_lockscreen_tile
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

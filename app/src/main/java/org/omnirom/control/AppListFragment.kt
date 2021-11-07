@@ -19,21 +19,26 @@ package org.omnirom.control
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
-import androidx.preference.PreferenceFragmentCompat
 
-class AppListFragment : PreferenceFragmentCompat() {
+// TODO maybe better to use a GridView
+class AppListFragment : AbstractSettingsFragment() {
     private val KEY_APPS_LIST = "apps_list"
     private val OMNISTORE_APP_PKG = "org.omnirom.omnistore"
     private val OMNISTORE_INSTALL_PKG = "org.omnirom.omnistoreinstaller"
     lateinit var appManager: ApplicationManager
 
-    override fun onResume() {
-        super.onResume()
-        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (activity as? SettingsActivity)?.updateFragmentTitle(resources.getString(R.string.applist_settings_title))
+    override fun getFragmentTitle(): String {
+        return resources.getString(R.string.applist_settings_title)
+    }
+
+    override fun getFragmentSummary(): String {
+        return resources.getString(R.string.applist_settings_summary)
+    }
+
+    override fun getFragmentIcon(): Int {
+        return R.drawable.applist_icon
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

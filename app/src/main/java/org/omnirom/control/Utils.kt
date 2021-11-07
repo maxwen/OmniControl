@@ -10,7 +10,7 @@ object Utils {
                     val enabled = pm.getApplicationEnabledSetting(packageName)
                     enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED &&
                             enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
-            } catch (e: PackageManager.NameNotFoundException) {
+            } catch (e: Exception) {
                     false
             }
     }

@@ -8,7 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="omni_logo_color">#a1c729</color>
-    <color name="colorPrimary">@android:color/white</color>
-    <color name="colorPrimaryDark">@android:color/white</color>
-    <color name="main_background_light">@android:color/white</color>
+    <color name="colorPrimary">@color/system_neutral1_50</color>
+    <color name="colorPrimaryDark">@color/system_neutral1_50</color>
+    <color name="main_background_light">@color/system_neutral1_50</color>
+    <color name="grid_shape_background">@color/main_background_light</color>
+    <color name="material_grey_950">#ff101010</color>
+    <color name="system_neutral1_800">#2E3133</color>
+    <color name="system_neutral1_900">#191C1E</color>
+    <color name="system_neutral1_50">#F0F0F3</color>
 </resources>

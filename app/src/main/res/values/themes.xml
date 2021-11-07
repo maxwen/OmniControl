@@ -9,8 +9,14 @@
         <item name="windowActionBar">false</item>
     </style>
 
-    <style name="Theme.OmniControl.TitleTextStyle" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textSize">32dp</item>
-        <item name="android:color">?android:textColorPrimary</item>
+    <style name="Theme.OmniControl.TitleTextStyle" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Theme.OmniControl.GridItem.TitleTextStyle" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Theme.OmniControl.GridItem.SummaryTextStyle" parent="@style/TextAppearance.MaterialComponents.Body2">
     </style>
 </resources>

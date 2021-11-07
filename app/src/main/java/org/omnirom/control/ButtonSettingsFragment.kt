@@ -24,12 +24,18 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
 
-class ButtonSettingsFragment : PreferenceFragmentCompat() {
+class ButtonSettingsFragment : AbstractSettingsFragment() {
 
-    override fun onResume() {
-        super.onResume()
-        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (activity as? SettingsActivity)?.updateFragmentTitle(resources.getString(R.string.button_settings_title))
+    override fun getFragmentTitle(): String {
+        return resources.getString(R.string.button_settings_title)
+    }
+
+    override fun getFragmentSummary(): String {
+        return resources.getString(R.string.button_settings_summary)
+    }
+
+    override fun getFragmentIcon(): Int {
+        return R.drawable.ic_settings_buttons
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

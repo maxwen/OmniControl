@@ -19,6 +19,8 @@ package org.omnirom.control
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -27,7 +29,6 @@ import androidx.fragment.app.Fragment
 
 class SettingsActivity : AppCompatActivity() {
 
-    lateinit var titleView: TextView
     private val CURRENT_FRAGMENT = "current_fragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,8 +49,6 @@ class SettingsActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.title = ""
         setSupportActionBar(toolbar)
-
-        titleView = findViewById(R.id.fragment_title)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -59,8 +58,22 @@ class SettingsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    fun updateFragmentTitle(title: String, summary: String, icon: Int) {
+        (findViewById<TextView>(R.id.fragment_title)).text = title
+        if (summary.isNotEmpty()) {
+            (findViewById<TextView>(R.id.fragment_summary)).visibility = View.VISIBLE
+            (findViewById<TextView>(R.id.fragment_summary)).text = summary
+        } else {
+            (findViewById<TextView>(R.id.fragment_summary)).visibility = View.GONE
+        }
+        (findViewById<ImageView>(R.id.fragment_icon)).visibility = View.VISIBLE
+        (findViewById<ImageView>(R.id.fragment_icon)).setImageResource(icon)
+    }
+
     fun updateFragmentTitle(title: String) {
-        titleView.text = title
+        (findViewById<TextView>(R.id.fragment_title)).text = title
+        (findViewById<TextView>(R.id.fragment_summary)).visibility = View.GONE
+        (findViewById<ImageView>(R.id.fragment_icon)).visibility = View.GONE
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

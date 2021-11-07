@@ -24,12 +24,18 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
 
-class BarsSettingsFragment : PreferenceFragmentCompat() {
+class BarsSettingsFragment : AbstractSettingsFragment() {
 
-    override fun onResume() {
-        super.onResume()
-        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (activity as? SettingsActivity)?.updateFragmentTitle(resources.getString(R.string.bars_settings_title))
+    override fun getFragmentTitle(): String {
+        return resources.getString(R.string.bars_settings_title)
+    }
+
+    override fun getFragmentSummary(): String {
+        return resources.getString(R.string.bars_settings_summary)
+    }
+
+    override fun getFragmentIcon(): Int {
+        return R.drawable.ic_bars_tile
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
