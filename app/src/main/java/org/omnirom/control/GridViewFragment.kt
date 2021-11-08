@@ -122,6 +122,21 @@ class GridViewFragment() : Fragment() {
                 )
             )
         }
+        if (Utils.isAvailableApp(requireContext(), "eu.chainfire.opendelta")) {
+            val wallpaperIntent = Intent()
+            wallpaperIntent.component = ComponentName(
+                "eu.chainfire.opendelta",
+                "eu.chainfire.opendelta.MainActivity"
+            )
+            gridItems.add(
+                IntentGridItem(
+                    R.string.system_update_title,
+                    R.string.system_update_summary,
+                    R.drawable.ic_system_update,
+                    wallpaperIntent
+                )
+            )
+        }
         if (Utils.isAvailableApp(requireContext(), "org.omnirom.device")) {
             val deviceIntent = Intent()
             deviceIntent.component = ComponentName(

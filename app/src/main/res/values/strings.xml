@@ -49,4 +49,9 @@
     <string name="lockscreen_weather_title">Show weather condition</string>
     <string name="lockscreen_weather_summary">Show current weather condition and temperature</string>
     <string name="lockscreen_weather_enabled_info">Requires enablement of weather service</string>
+
+    <string name="system_update_title">System updates</string>
+    <string name="system_update_summary">Download and install OmniROM updates</string>
+
+
 </resources>

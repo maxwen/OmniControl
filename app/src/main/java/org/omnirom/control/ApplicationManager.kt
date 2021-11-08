@@ -16,6 +16,7 @@ package org.omnirom.control
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -39,7 +40,14 @@ class ApplicationManager(context: Context) {
     fun getAppIcon(app: Application): Drawable {
         val pm: PackageManager = mContext.getPackageManager()
         return try {
-            resizeAppIcon(pm.getApplicationIcon(app.mPackage), mIconSize, 0)
+            var packageName = app.mPackage;
+            if (packageName.equals("org.omnirom.omnistore")) {
+                if (!Utils.isAvailableApp(mContext, packageName)) {
+                    // get icon from installer
+                    packageName = "org.omnirom.omnistoreinstaller"
+                }
+            }
+            resizeAppIcon(pm.getApplicationIcon(packageName), mIconSize, 0)
         } catch (e: PackageManager.NameNotFoundException) {
             pm.defaultActivityIcon
         }
@@ -48,6 +56,15 @@ class ApplicationManager(context: Context) {
     fun startApp(app: Application) {
         val intent = Intent()
         intent.component = app.getComponentName()
+        try {
+            mContext.startActivity(intent)
+        } catch (e: Exception) {
+        }
+    }
+
+    fun startApp(component: ComponentName) {
+        val intent = Intent()
+        intent.component = component
         try {
             mContext.startActivity(intent)
         } catch (e: Exception) {

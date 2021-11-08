@@ -17,17 +17,18 @@
  */
 package org.omnirom.control
 
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 
 // TODO maybe better to use a GridView
 class AppListFragment : AbstractSettingsFragment() {
     private val KEY_APPS_LIST = "apps_list"
-    private val OMNISTORE_APP_PKG = "org.omnirom.omnistore"
-    private val OMNISTORE_INSTALL_PKG = "org.omnirom.omnistoreinstaller"
     lateinit var appManager: ApplicationManager
+    var updateAppList: Boolean = false
 
     override fun getFragmentTitle(): String {
         return resources.getString(R.string.applist_settings_title)
@@ -88,26 +89,6 @@ class AppListFragment : AbstractSettingsFragment() {
             resources.getString(R.string.omnistore_summary)
         )
 
-        appManager.addApp(
-            "org.omnirom.omnistoreinstaller",
-            "org.omnirom.omnistoreinstaller.MainActivity",
-            resources.getString(R.string.omnistore_title),
-            resources.getString(R.string.omnistore_summary)
-        )
-
-        /*appManager.addApp(
-            "org.omnirom.omnistyle",
-            "org.omnirom.omnistyle.WallpaperActivity",
-            getString(R.string.wallpaper_title),
-            getString(R.string.wallpaper_summary)
-        )*/
-
-        /*appManager.addApp(
-            "org.omnirom.device",
-            "org.omnirom.device.DeviceSettings",
-            getString(R.string.device_settings_title),
-            getString(R.string.device_settings_summary)
-        )*/
         createAppList()
     }
 
@@ -116,15 +97,13 @@ class AppListFragment : AbstractSettingsFragment() {
         if (appCategory != null) {
             appCategory.removeAll()
             for (app in appManager.mAppList) {
-                if (!Utils.isAvailableApp(requireContext(), app.mPackage)) {
-                    continue
+                // store is always visible cause installer is always there
+                if (app.mPackage != "org.omnirom.omnistore") {
+                    if (!Utils.isAvailableApp(requireContext(), app.mPackage)) {
+                        continue
+                    }
                 }
-                if (app.mPackage.equals(OMNISTORE_INSTALL_PKG) && Utils.isAvailableApp(
-                        requireContext(), OMNISTORE_APP_PKG
-                    )
-                ) {
-                    continue
-                }
+
                 val preference = Preference(requireContext())
                 preference.key = app.mPackage
                 preference.title = app.mTitle
@@ -136,6 +115,7 @@ class AppListFragment : AbstractSettingsFragment() {
 
                 appCategory.addPreference(preference)
             }
+            updateAppList = false
         }
     }
 
@@ -143,10 +123,25 @@ class AppListFragment : AbstractSettingsFragment() {
         if (preference?.key != null) {
             var app: Application? = appManager.getAppOfPackage(preference.key)
             if (app != null) {
+                if (app.mPackage == "org.omnirom.omnistore") {
+                    if (!Utils.isAvailableApp(requireContext(), app.mPackage)) {
+                        // start installer instead
+                        appManager.startApp(ComponentName("org.omnirom.omnistoreinstaller",
+                            "org.omnirom.omnistoreinstaller.MainActivity"))
+                        updateAppList = true
+                        return true
+                    }
+                }
                 appManager.startApp(app)
                 return true
             }
         }
         return super.onPreferenceTreeClick(preference)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (updateAppList)
+            createAppList()
     }
 }
