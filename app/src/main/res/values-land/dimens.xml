@@ -2,4 +2,6 @@
 <resources>
     <dimen name="fragment_side_margin">30dp</dimen>
     <dimen name="fragment_icon_margin_start">20dp</dimen>
+    <dimen name="grid_icon_margin_start">10dp</dimen>
+
 </resources>

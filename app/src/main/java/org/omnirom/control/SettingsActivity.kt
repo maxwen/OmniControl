@@ -67,14 +67,12 @@ class SettingsActivity : AppCompatActivity() {
         } else {
             (findViewById<TextView>(R.id.fragment_summary)).visibility = View.GONE
         }
-        (findViewById<ImageView>(R.id.fragment_icon)).visibility = View.VISIBLE
-        (findViewById<ImageView>(R.id.fragment_icon)).setImageResource(icon)
-    }
-
-    fun updateFragmentTitle(title: String) {
-        (findViewById<TextView>(R.id.fragment_title)).text = title
-        (findViewById<TextView>(R.id.fragment_summary)).visibility = View.GONE
-        (findViewById<ImageView>(R.id.fragment_icon)).visibility = View.GONE
+        if (icon != 0) {
+            (findViewById<ImageView>(R.id.fragment_icon)).visibility = View.VISIBLE
+            (findViewById<ImageView>(R.id.fragment_icon)).setImageResource(icon)
+        } else {
+            (findViewById<ImageView>(R.id.fragment_icon)).visibility = View.GONE
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

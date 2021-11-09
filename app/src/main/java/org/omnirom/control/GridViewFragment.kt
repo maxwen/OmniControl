@@ -52,7 +52,8 @@ class GridViewFragment() : Fragment() {
     class GridViewAdapter(context: Context, gridItems: List<GridItem>) :
         ArrayAdapter<GridItem>(context, 0, gridItems) {
 
-        private val vi: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        private val vi: LayoutInflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             val viewItem: View = convertView ?: vi.inflate(R.layout.grid_item, null)
@@ -165,7 +166,11 @@ class GridViewFragment() : Fragment() {
     override fun onResume() {
         super.onResume()
         (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        (activity as? SettingsActivity)?.updateFragmentTitle(resources.getString(R.string.app_title))
+        (activity as? SettingsActivity)?.updateFragmentTitle(
+            resources.getString(R.string.app_title),
+            "",
+            R.drawable.ic_settings_grid
+        )
     }
 
     override fun onCreateView(

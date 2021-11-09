@@ -7,4 +7,5 @@
     <dimen name="grid_item_border">10dp</dimen>
     <dimen name="fragment_icon_margin_start">10dp</dimen>
     <dimen name="grid_item_icon_size">32dp</dimen>
+    <dimen name="grid_icon_margin_start">0dp</dimen>
 </resources>

@@ -13,6 +13,7 @@
             android:id="@+id/grid_item_icon"
             android:layout_width="@dimen/grid_item_icon_size"
             android:layout_height="@dimen/grid_item_icon_size"
+            android:layout_marginStart="@dimen/grid_icon_margin_start"
             android:layout_gravity="center_vertical" />
 
         <LinearLayout
