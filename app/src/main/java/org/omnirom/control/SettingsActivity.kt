@@ -33,6 +33,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //setTheme(android.R.style.Theme_DeviceDefault_Settings)
         setContentView(R.layout.settings_activity)
 
         var fragment: Fragment = GridViewFragment()

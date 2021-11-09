@@ -17,14 +17,19 @@
  */
 package org.omnirom.control
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceScreen
 
 
 class ButtonSettingsFragment : AbstractSettingsFragment() {
+    private val CATEGORY_POWER = "button_power"
+    private val KEY_ADVANCED_REBOOT = "advanced_reboot"
 
     override fun getFragmentTitle(): String {
         return resources.getString(R.string.button_settings_title)
@@ -40,6 +45,21 @@ class ButtonSettingsFragment : AbstractSettingsFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.button_settings_preferences, rootKey)
+
+        val powerCategory: PreferenceCategory? = findPreference(CATEGORY_POWER)
+        if (powerCategory != null) {
+            val id = Resources.getSystem().getIdentifier("config_rebootActionsList", "array", "android")
+            val rebootList = Resources.getSystem().getStringArray(id)
+            if (rebootList.isEmpty()) {
+                val advancedReboot: Preference? = findPreference(KEY_ADVANCED_REBOOT)
+                if (advancedReboot != null) {
+                    powerCategory.removePreference(advancedReboot)
+                }
+            }
+            if (powerCategory.preferenceCount == 0){
+                // TODO
+            }
+        }
     }
 
     override fun onPreferenceTreeClick(preference: Preference?): Boolean {

@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name">OmniControl</string>
-    <!-- Settings Activity Title -->
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="app_name">Control Center</string>
+    <string name="app_title">OmniROM Control Center</string>
 
     <string name="weather_config_title">Weather service</string>
     <string name="weather_config_summary">System service settings</string>
